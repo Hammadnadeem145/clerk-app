@@ -3,6 +3,14 @@ import Link from 'next/link';
 import Container from '@components/Container';
 
 import styles from './Header.module.scss';
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton
+} from "@clerk/nextjs";
+
 
 const Header = () => {
   return (
@@ -16,6 +24,7 @@ const Header = () => {
           </Link>
         </p>
         <ul className={styles.headerLinks}>
+          <SignedOut>
           <li>
             <Link href="/dashboard">
               <a>
@@ -23,6 +32,12 @@ const Header = () => {
               </a>
             </Link>
           </li>
+          </SignedOut>
+          <SignedIn>
+          <li>
+          <UserButton />
+          </li>
+          </SignedIn>
         </ul>
       </Container>
     </header>
